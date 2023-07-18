@@ -126,7 +126,7 @@ process transfer_seq_files{
           """
           mkdir fastqs mytmp
           bs download project --api-server=$ser --access-token=$tok -n ${params.project} -o mytmp --extension fastq.gz
-          mv mytmp/*/*.fastq.gz fastqs
+          mv -f mytmp/*/*.fastq.gz fastqs
           """
         else if ( params.seqtype == "nextseq" || params.seqtype == "Nextseq" || params.seqtype == "NextSeq")
           """
