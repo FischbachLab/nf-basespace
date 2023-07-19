@@ -100,7 +100,9 @@ if (  params.seqtype == "miseq" || params.seqtype == "Miseq" || params.seqtype =
   seq="MiSeq"
 else
   seq="NextSeq"
-
+/*
+Thansfer fastq files from Basesapce to aws s3
+*/
 process transfer_seq_files{
         cpus 2
         memory 8.GB
@@ -124,9 +126,9 @@ process transfer_seq_files{
 
         if (  params.seqtype == "miseq" || params.seqtype == "Miseq" || params.seqtype == "MiSeq" )
           """
-          mkdir fastqs mytmp
-          bs download project --api-server=$ser --access-token=$tok -n ${params.project} -o mytmp --extension fastq.gz
-          mv -f mytmp/*/*.fastq.gz fastqs
+          mkdir fastqs
+          process_miseq.sh $ser $tok ${params.project} ${params.output}
+          mv tmp_*/fastqs/*.fastq.gz fastqs
           """
         else if ( params.seqtype == "nextseq" || params.seqtype == "Nextseq" || params.seqtype == "NextSeq")
           """
