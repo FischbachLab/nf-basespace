@@ -18,7 +18,7 @@ aws batch submit-job \
     "--project","230308_TY-16Sv4_KH9HP", \
     "--output", "s3://genomics-workflow-core/Results/Basespace" "
 ```
-#### MiSeq data are saved at
+#### MiSeq data is saved at
 ```
 s3://genomics-workflow-core/Results/Basespace/MiSeq/230308_TY-16Sv4_KH9HP/
 ```
@@ -34,7 +34,7 @@ aws batch submit-job \
     "--project","230310_AZ-WGS_HT52TBGXN", \
     "--output", "s3://genomics-workflow-core/Results/Basespace" "
 ```
-####  NextSeq data are saved at
+####  NextSeq data is saved at
 ```
 s3://genomics-workflow-core/Results/Basespace/NextSeq/230310_AZ-WGS_HT52TBGXN/
 ```
