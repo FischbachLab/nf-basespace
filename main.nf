@@ -107,6 +107,7 @@ process transfer_seq_files{
         cpus 2
         memory 8.GB
 
+	errorStrategy = 'ignore'
         //secret 'BASESPACE_API_SERVER'
         //secret 'BASESPACE_API_TOKEN'
 
