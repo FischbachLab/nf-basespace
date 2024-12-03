@@ -31,8 +31,12 @@ bs list biosample --api-server=${s} --access-token=${t} --project-name=${p}  -f 
 
 for i in $(cat ${MYTMP}/sample_list.txt )
 do
-
-        cat "$MYTMP"/${i}*/*_R1_001.fastq.gz > "$FASTQS"/${i}_R1.fastq.gz &&  cat "$MYTMP"/${i}*/*_R2_001.fastq.gz > "$FASTQS"/${i}_R2.fastq.gz
+        # Check if the fastq file exists
+        if ls "$MYTMP"/${i}*/*_R1_001.fastq.gz 1> /dev/null 2>&1;  then
+                cat "$MYTMP"/${i}*/*_R1_001.fastq.gz > "$FASTQS"/${i}_R1.fastq.gz &&  cat "$MYTMP"/${i}*/*_R2_001.fastq.gz > "$FASTQS"/${i}_R2.fastq.gz
+        else
+                echo "Sample ${i} does not exist."
+        fi
 
 done
 
